@@ -165,51 +165,35 @@
     </div>
 </div>
 <script>
-    // Get the header element
-    var header = document.querySelector('.header-area.header-sticky');
-
-    // Variable to keep track of scroll position
-    var lastScrollTop = 0;
-
-    // Function to handle scroll events
-    function handleScroll() {
-        var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        // Check if scrolling down
-        if (currentScrollTop > lastScrollTop) {
-            // Scrolling down
-            header.style.top = "-60px"; // Hide header (adjust value based on header height)
-        } else {
-            // Scrolling up
-            header.style.top = "0"; // Show header
-        }
-
-        // Update the last scroll position
-        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-    }
-
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
-
-
     document.getElementById('registration-form').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
 
-        // Gather form data
         const formData = new FormData(this);
-        
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        const appointmentDate = formData.get('appointmentDate');
+        const appointmentTime = formData.get('appointmentTime');
+        const appointmentDatetime = `${appointmentDate}T${appointmentTime}:00`; // Format: YYYY-MM-DDTHH:MM:SS
+
+        const payload = {
+            fullName: formData.get('fullName'),
+            email: formData.get('email'),
+            contactNumber: formData.get('contactNumber'),
+            appointmentDatetime: appointmentDatetime
+        };
+
         fetch('/api/method/athena_dev.athena_dev.api.free_class.create_free_class', {
             method: 'POST',
-            body: JSON.stringify(Object.fromEntries(formData)),
+            body: JSON.stringify(payload),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-Frappe-CSRF-Token': csrfToken
             }
         })
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
                 showPopup('success-popup');
-                // Optionally, reset the form or redirect the user
                 document.getElementById('registration-form').reset();
             } else {
                 showPopup('error-popup');
