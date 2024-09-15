@@ -651,6 +651,13 @@ welcome
   height: 100vh;
 }
 
+.section_regis{
+  background-image: url(../images/banner-free-class.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 100px;
+}
 .welcome-area .header-text {
   position: absolute;
   top: 50%;
