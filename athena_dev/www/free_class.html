@@ -2,7 +2,7 @@
 {% block body %}
 <style>
     body {
-        background-image: url('../../public/images/banner-free-class.png'); /* Path to your image */
+        background-image: url('assets/public/images/banner-free-class.png'); /* Path to your image */
         background-size: cover; /* Cover the whole screen */
         background-position: center; /* Center the image */
         background-repeat: no-repeat; /* Avoid repeating the image */
@@ -60,6 +60,7 @@
     }
 </style>
 {% include "templates/header/header.html" %}
+<section class="section">
 <div class="container">
     <div class="registration-form">
         <h1>Registration Form</h1>
@@ -92,5 +93,6 @@
         </form>
     </div>
 </div>
+</section>
 {% include "templates/footer/footer.html" %}
 {% endblock%}
