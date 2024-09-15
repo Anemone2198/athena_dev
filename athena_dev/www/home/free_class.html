@@ -1,166 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets/athena_dev/images/fav.png" />
-    <title>Athena Dev</title>
-<!--
-SOFTY PINKO
-https://templatemo.com/tm-535-softy-pinko
--->
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/athena_dev/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="assets/athena_dev/css/font-awesome.css">
-
-    <link rel="stylesheet" href="assets/athena_dev/css/templatemo-softy-pinko.css">
-
-    </head>
-    
-    <body>
-        <header class="header-area header-sticky">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <nav class="main-nav">
-                            <!-- ***** Logo Start ***** -->
-                            <a href="#" class="logo">
-                                <img src="assets/athena_dev/images/logo.png" alt="Softy Pinko"/>
-                            </a>
-                            <!-- ***** Logo End ***** -->
-                            <!-- ***** Menu Start ***** -->
-                            <ul class="nav">
-                                <li><a href="#welcome" class="active">Home</a></li>
-                                <li><a href="#features">About</a></li>
-                                <li><a href="#testimonials">Testimonials</a></li>
-                                <li><a href="#pricing-plans">Pricing Tables</a></li>
-                                <li><a href="#blog">Blog Entries</a></li>
-                                <li><a href="#contact-us">Contact Us</a></li>
-                                <li><a href="#">Login</a></li>
-                            </ul>
-                            <a class='menu-trigger'>
-                                <span>Menu</span>
-                            </a>
-                            <!-- ***** Menu End ***** -->
-                        </nav>
-                    </div>
-                </div>
+{% extends "templates/base/base_v1.html" %}
+{% block body %}
+<style>
+    body {
+        background-image: url('../../public/images/banner-free-class.png'); /* Path to your image */
+        background-size: cover; /* Cover the whole screen */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Avoid repeating the image */
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    .registration-form {
+        background: #fff; /* White background for the form */
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        max-width: 500px;
+        width: 100%;
+    }
+    .registration-form h1 {
+        margin-bottom: 30px;
+        color: #333;
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column; /* Stack label on top of input */
+    }
+    .form-group label {
+        margin-bottom: 5px; /* Space between label and input */
+        font-weight: bold;
+    }
+    .form-control {
+        border-radius: 5px;
+        box-shadow: none;
+        padding: 10px;
+    }
+    .btn-submit {
+        background-color: #e83e8c; /* Primary color from Softy Pinko */
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+    }
+    .btn-submit:hover {
+        background-color: #d63384; /* Slightly darker on hover */
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+</style>
+{% include "templates/header/header.html" %}
+<div class="container">
+    <div class="registration-form">
+        <h1>Registration Form</h1>
+        <form action="/api/method/athena_dev.athena_dev.api.free_class.create_free_class" method="post">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" class="form-control" id="fullName" name="fullName" required>
             </div>
-        </header>
-        <style>
-            body {
-                background-image: url('../../public/images/banner-free-class.png'); /* Path to your image */
-                background-size: cover; /* Cover the whole screen */
-                background-position: center; /* Center the image */
-                background-repeat: no-repeat; /* Avoid repeating the image */
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 0;
-            }
-            .registration-form {
-                background: #fff; /* White background for the form */
-                padding: 40px;
-                border-radius: 8px;
-                box-shadow: 0 0 20px rgba(0,0,0,0.1);
-                max-width: 500px;
-                width: 100%;
-            }
-            .registration-form h1 {
-                margin-bottom: 30px;
-                color: #333;
-                text-align: center;
-            }
-            .form-group {
-                margin-bottom: 20px;
-                display: flex;
-                flex-direction: column; /* Stack label on top of input */
-            }
-            .form-group label {
-                margin-bottom: 5px; /* Space between label and input */
-                font-weight: bold;
-            }
-            .form-control {
-                border-radius: 5px;
-                box-shadow: none;
-                padding: 10px;
-            }
-            .btn-submit {
-                background-color: #e83e8c; /* Primary color from Softy Pinko */
-                border: none;
-                color: #fff;
-                padding: 10px 20px;
-                border-radius: 5px;
-                font-size: 16px;
-                cursor: pointer;
-                width: 100%;
-            }
-            .btn-submit:hover {
-                background-color: #d63384; /* Slightly darker on hover */
-            }
-            .container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
-            }
-        </style>
-        <div class="container">
-            <div class="registration-form">
-                <h1>Registration Form</h1>
-                <form action="/api/method/athena_dev.athena_dev.api.free_class.create_free_class" method="post">
-                    <div class="form-group">
-                        <label for="fullName">Full Name:</label>
-                        <input type="text" class="form-control" id="fullName" name="fullName" required>
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="email">Email Address:</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="contactNumber">Contact Number:</label>
-                        <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="appointmentDate">Appointment Date:</label>
-                        <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required>
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="appointmentTime">Appointment Time:</label>
-                        <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" required>
-                    </div>
-                    <button type="submit" class="btn-submit">Submit</button>
-                </form>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
-        </div>
-    <!-- jQuery -->
-    <script src="assets/athena_dev/js/jquery-2.1.0.min.js"></script>
 
-    <!-- Bootstrap -->
-    <script src="assets/athena_dev/js/popper.js"></script>
-    <script src="assets/athena_dev/js/bootstrap.min.js"></script>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+            </div>
 
-    <!-- Plugins -->
-    <script src="assets/athena_dev/js/scrollreveal.min.js"></script>
-    <script src="assets/athena_dev/js/waypoints.min.js"></script>
-    <script src="assets/athena_dev/js/jquery.counterup.min.js"></script>
-    <script src="assets/athena_dev/js/imgfix.min.js"></script> 
-    
-    <!-- Global Init -->
-    <script src="assets/athena_dev/js/custom.js"></script>
+            <div class="form-group">
+                <label for="appointmentDate">Appointment Date:</label>
+                <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required>
+            </div>
 
-  </body>
-</html>
+            <div class="form-group">
+                <label for="appointmentTime">Appointment Time:</label>
+                <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" required>
+            </div>
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% include "templates/footer/footer.html" %}
+{% endblock%}
