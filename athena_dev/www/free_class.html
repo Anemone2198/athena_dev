@@ -123,5 +123,32 @@
         </div>
     </div>
 </section>
+<script>
+    // Get the header element
+    var header = document.querySelector('.header-area.header-sticky');
+
+    // Variable to keep track of scroll position
+    var lastScrollTop = 0;
+
+    // Function to handle scroll events
+    function handleScroll() {
+        var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Check if scrolling down
+        if (currentScrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = "-60px"; // Hide header (adjust value based on header height)
+        } else {
+            // Scrolling up
+            header.style.top = "0"; // Show header
+        }
+
+        // Update the last scroll position
+        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+</script>
 {% include "templates/footer/footer.html" %}
 {% endblock %}
