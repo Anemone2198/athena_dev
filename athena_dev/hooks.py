@@ -59,7 +59,7 @@ app_license = "mit"
 # application home page (will override Website Settings)
 home_page = "home"
 website_route_rules = [
-    {"from_route": "/home/free-class", "to_route": "free_class"}
+    {"from_route": "/home/free_class.html", "to_route": "free_class"}
 ]
 
 # website user home page (by Role)
