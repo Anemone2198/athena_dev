@@ -169,7 +169,13 @@
         event.preventDefault(); // Prevent the default form submission
 
         const formData = new FormData(this);
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')
+        if (csrfToken) {
+            const csrfToken = csrfTokenElement.getAttribute('content');
+            console.log('CSRF Token:', csrfToken); // Debugging line to check the token value
+        } else {
+            console.error('CSRF token meta tag not found');
+        }
 
         const appointmentDate = formData.get('appointmentDate');
         const appointmentTime = formData.get('appointmentTime');
