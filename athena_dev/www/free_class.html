@@ -18,13 +18,6 @@
         box-sizing: border-box;
     }
 
-    .header-area .main-nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-    }
-
     .logo img {
         max-height: 50px; /* Adjust logo size as needed */
     }
@@ -52,28 +45,6 @@
 
     .menu-trigger {
         display: none; /* Hide menu trigger on large screens */
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-        .header-area .main-nav {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .nav {
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .nav li {
-            margin: 10px 0; /* Space between menu items */
-        }
-
-        .menu-trigger {
-            display: block; /* Show menu trigger on small screens */
-            cursor: pointer;
-        }
     }
 
     /* Your existing CSS styles */
