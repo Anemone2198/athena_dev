@@ -2,23 +2,29 @@
 {% block body %}
 <style>
     body {
-        background-image: url('assets/public/images/banner-free-class.png'); /* Path to your image */
-        background-size: cover; /* Cover the whole screen */
-        background-position: center; /* Center the image */
-        background-repeat: no-repeat; /* Avoid repeating the image */
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background-image: url('/assets/images/banner-free-class.png'); /* Path to your image */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif; /* Consistent font-family */
+    }
+    header, footer {
+        background: #f8f9fa; /* Light background color */
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
     }
     .registration-form {
-        background: #fff; /* White background for the form */
+        background: #fff;
         padding: 40px;
         border-radius: 8px;
         box-shadow: 0 0 20px rgba(0,0,0,0.1);
         max-width: 500px;
         width: 100%;
+        margin: 0 auto; /* Center the form horizontally */
     }
     .registration-form h1 {
         margin-bottom: 30px;
@@ -28,19 +34,20 @@
     .form-group {
         margin-bottom: 20px;
         display: flex;
-        flex-direction: column; /* Stack label on top of input */
+        flex-direction: column;
     }
     .form-group label {
-        margin-bottom: 5px; /* Space between label and input */
+        margin-bottom: 5px;
         font-weight: bold;
     }
     .form-control {
         border-radius: 5px;
         box-shadow: none;
         padding: 10px;
+        font-size: 16px;
     }
     .btn-submit {
-        background-color: #e83e8c; /* Primary color from Softy Pinko */
+        background-color: #e83e8c;
         border: none;
         color: #fff;
         padding: 10px 20px;
@@ -50,49 +57,81 @@
         width: 100%;
     }
     .btn-submit:hover {
-        background-color: #d63384; /* Slightly darker on hover */
+        background-color: #d63384;
     }
     .container {
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
+        padding: 20px;
+    }
+    section {
+        padding: 20px;
+        width: 100%;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .registration-form {
+            padding: 20px;
+        }
+        .form-control {
+            font-size: 14px;
+        }
+        .btn-submit {
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .registration-form {
+            padding: 15px;
+            width: 100%;
+            margin: 0;
+        }
+        .form-control {
+            font-size: 14px;
+        }
+        .btn-submit {
+            padding: 8px 16px;
+        }
     }
 </style>
 {% include "templates/header/header.html" %}
 <section class="section">
-<div class="container">
-    <div class="registration-form">
-        <h1>Registration Form</h1>
-        <form action="/api/method/athena_dev.athena_dev.api.free_class.create_free_class" method="post">
-            <div class="form-group">
-                <label for="fullName">Full Name:</label>
-                <input type="text" class="form-control" id="fullName" name="fullName" required>
-            </div>
+    <div class="container">
+        <div class="registration-form">
+            <h1>Registration Form</h1>
+            <form action="/api/method/athena_dev.athena_dev.api.free_class.create_free_class" method="post">
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" class="form-control" id="fullName" name="fullName" required>
+                </div>
 
-            <div class="form-group">
-                <label for="email">Email Address:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
 
-            <div class="form-group">
-                <label for="contactNumber">Contact Number:</label>
-                <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
-            </div>
+                <div class="form-group">
+                    <label for="contactNumber">Contact Number:</label>
+                    <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                </div>
 
-            <div class="form-group">
-                <label for="appointmentDate">Appointment Date:</label>
-                <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required>
-            </div>
+                <div class="form-group">
+                    <label for="appointmentDate">Appointment Date:</label>
+                    <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required>
+                </div>
 
-            <div class="form-group">
-                <label for="appointmentTime">Appointment Time:</label>
-                <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" required>
-            </div>
-            <button type="submit" class="btn-submit">Submit</button>
-        </form>
+                <div class="form-group">
+                    <label for="appointmentTime">Appointment Time:</label>
+                    <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" required>
+                </div>
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
     </div>
-</div>
 </section>
 {% include "templates/footer/footer.html" %}
-{% endblock%}
+{% endblock %}
