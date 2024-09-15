@@ -87,13 +87,39 @@
         min-height: 100vh;
         padding: 20px;
     }
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    .popup-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+        position: relative;
+    }
+    .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 20px;
+    }
 </style>
 {% include "templates/header/header.html" %}
 <section id="registration-section" class="section_regis">
     <div class="container_regis">
         <div class="registration-form">
             <h1>Registration Form</h1>
-            <form action="/api/method/athena_dev.athena_dev.api.free_class.create_free_class" method="post">
+            <form id="registration-form">
                 <div class="form-group">
                     <label for="fullName">Full Name:</label>
                     <input type="text" class="form-control" id="fullName" name="fullName" required>
@@ -123,6 +149,21 @@
         </div>
     </div>
 </section>
+<!-- Success Popup -->
+<div id="success-popup" class="popup" style="display: none;">
+    <div class="popup-content">
+        <span class="popup-close" onclick="closePopup('success-popup')">&times;</span>
+        <p>Form submitted successfully!</p>
+    </div>
+</div>
+
+<!-- Error Popup -->
+<div id="error-popup" class="popup" style="display: none;">
+    <div class="popup-content">
+        <span class="popup-close" onclick="closePopup('error-popup')">&times;</span>
+        <p>There was an error submitting the form.</p>
+    </div>
+</div>
 <script>
     // Get the header element
     var header = document.querySelector('.header-area.header-sticky');
@@ -149,6 +190,44 @@
 
     // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
+
+
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Gather form data
+        const formData = new FormData(this);
+        
+        fetch('/api/method/athena_dev.athena_dev.api.free_class.create_free_class', {
+            method: 'POST',
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                showPopup('success-popup');
+                // Optionally, reset the form or redirect the user
+                document.getElementById('registration-form').reset();
+            } else {
+                showPopup('error-popup');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showPopup('error-popup');
+        });
+    });
+
+    function showPopup(popupId) {
+        document.getElementById(popupId).style.display = 'flex';
+    }
+
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
 </script>
 {% include "templates/footer/footer.html" %}
 {% endblock %}
