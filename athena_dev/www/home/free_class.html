@@ -7,30 +7,84 @@
     <link rel="stylesheet" type="text/css" href="assets/athena_dev/css/font-awesome.css">
     <link rel="stylesheet" href="assets/athena_dev/css/templatemo-softy-pinko.css">
     <title>Registration Form</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+            padding-top: 50px; /* To account for any fixed navbar */
+        }
+        .registration-form {
+            background: #fff; /* White background for the form */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .registration-form h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            border-radius: 5px;
+            box-shadow: none;
+        }
+        .btn-submit {
+            background-color: #e83e8c; /* Primary color from Softy Pinko */
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-submit:hover {
+            background-color: #d63384; /* Slightly darker on hover */
+        }
+    </style>
 </head>
 <body>
-    <h1>Registration Form</h1>
-    <form action="/api/method/athena_dev.athena_dev.api.free_class.create_free_class" method="post">
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" name="fullName" required><br><br>
+    <div class="container">
+        <div class="registration-form">
+            <h1>Registration Form</h1>
+            <form action="/api/method/athena_dev.athena_dev.api.free_class.create_free_class" method="post">
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" class="form-control" id="fullName" name="fullName" required>
+                </div>
 
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required><br><br>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
 
-        <label for="contactNumber">Contact Number:</label>
-        <input type="tel" id="contactNumber" name="contactNumber" required><br><br>
+                <div class="form-group">
+                    <label for="contactNumber">Contact Number:</label>
+                    <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                </div>
 
-        <label for="appointmentDate">Appointment Date:</label>
-        <input type="date" id="appointmentDate" name="appointmentDate" required><br><br>
+                <div class="form-group">
+                    <label for="appointmentDate">Appointment Date:</label>
+                    <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required>
+                </div>
 
-        <label for="appointmentTime">Appointment Time:</label>
-        <input type="time" id="appointmentTime" name="appointmentTime" required><br><br>
+                <div class="form-group">
+                    <label for="appointmentTime">Appointment Time:</label>
+                    <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" required>
+                </div>
 
-        <label for="additionalNotes">Additional Notes (Optional):</label><br>
-        <textarea id="additionalNotes" name="additionalNotes"></textarea><br><br>
+                <div class="form-group">
+                    <label for="additionalNotes">Additional Notes (Optional):</label>
+                    <textarea class="form-control" id="additionalNotes" name="additionalNotes" rows="3"></textarea>
+                </div>
 
-        <input type="submit" value="Submit">
-    </form>
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
     <!-- jQuery -->
     <script src="assets/athena_dev/js/jquery-2.1.0.min.js"></script>
 
