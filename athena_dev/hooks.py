@@ -36,8 +36,8 @@ app_license = "mit"
 # website_theme_scss = "athena_dev/public/scss/website"
 
 # include js, css files in header of web form
-# webform_include_js = {"doctype": "public/js/doctype.js"}
-# webform_include_css = {"doctype": "public/css/doctype.css"}
+webform_include_js =  ["assets/js/bootstrap.min.js", "assets/js/custom.js", "assets/js/imgfix.min.js", "assets/js/imgfix.min.js", "assets/js/jquery-2.1.0.min.js", "assets/js/jquery.counterup.min.js","assets/js/popper.js","assets/js/scrollreveal.min.js","assets/js/waypoints.min.js"]
+webform_include_css = ["assets/css/bootstrap.min.css","assets/css/flex-slider.css","assets/css/font-awesome.css","assets/css/templatemo-softy-pinko.css"]
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
@@ -58,9 +58,6 @@ app_license = "mit"
 
 # application home page (will override Website Settings)
 home_page = "home"
-website_route_rules = [
-    {"from_route": "/home/free_class.html", "to_route": "free_class"}
-]
 
 # website user home page (by Role)
 # role_home_page = {
