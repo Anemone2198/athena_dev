@@ -43,10 +43,6 @@
         font-weight: bold;
     }
 
-    .menu-trigger {
-        display: none; /* Hide menu trigger on large screens */
-    }
-
     /* Your existing CSS styles */
     .registration-form {
         background: #fff;
@@ -90,21 +86,17 @@
     .btn-submit:hover {
         background-color: #d63384;
     }
-    .container {
+    .container_regis {
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         padding: 20px;
     }
-    section {
-        padding: 20px;
-        width: 100%;
-    }
 </style>
 {% include "templates/header/header.html" %}
 <section id="registration-section" class="section_regis">
-    <div class="container">
+    <div class="container_regis">
         <div class="registration-form">
             <h1>Registration Form</h1>
             <form action="/api/method/athena_dev.athena_dev.api.free_class.create_free_class" method="post">
