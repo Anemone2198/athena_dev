@@ -11,13 +11,18 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="#welcome" class="active">Home</a></li>
-                        <li><a href="#features">About</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#pricing-plans">Pricing Tables</a></li>
-                        <li><a href="#blog">Blog Entries</a></li>
-                        <li><a href="#contact-us">Contact Us</a></li>
-                        <li><a href="#">Login</a></li>
+                        {% if free_class == 1 %}
+                            <li><a href="/" class="active">Home</a></li>
+                            <li><a href="#">Login</a></li>
+                        {% else %}
+                            <li><a href="#welcome" class="active">Home</a></li>
+                            <li><a href="#features">About</a></li>
+                            <li><a href="#testimonials">Testimonials</a></li>
+                            <li><a href="#pricing-plans">Pricing Tables</a></li>
+                            <li><a href="#blog">Blog Entries</a></li>
+                            <li><a href="#contact-us">Contact Us</a></li>
+                            <li><a href="#">Login</a></li>
+                        {% endif %}
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
