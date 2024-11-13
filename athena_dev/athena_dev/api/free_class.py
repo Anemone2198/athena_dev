@@ -22,9 +22,6 @@ def create_free_class(fullName, email, contactNumber, appointmentDatetime):
         # Insert the new entry into the database
         new_entry.insert()
 
-        # Commit the transaction
-        frappe.db.commit()
-
         return {"status": "success", "message": "Entry created successfully"}
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), "create_free_class error")

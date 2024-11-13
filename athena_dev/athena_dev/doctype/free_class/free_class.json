@@ -1,11 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-09-16 00:21:22.411334",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_oaqv",
+  "naming_series",
   "amended_from",
   "full_name",
   "email",
@@ -52,15 +54,23 @@
    "fieldname": "appointment_time",
    "fieldtype": "Time",
    "label": "Appointment Time"
+  },
+  {
+   "default": "FC-.{full_name}.-.####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "FC-.{full_name}.-.####"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-16 00:27:10.152812",
+ "modified": "2024-11-13 16:11:56.990038",
  "modified_by": "Administrator",
  "module": "Athena Dev",
  "name": "Free Class",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
